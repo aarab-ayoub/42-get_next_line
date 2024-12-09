@@ -6,7 +6,7 @@ size_t ft_strlen(const char* str)
 	size_t i;
     i = 0;
     if (!str)
-        return NULL;    
+        return (0);    
     while (str[i])
         i++;
     return (i);
@@ -15,51 +15,47 @@ size_t ft_strlen(const char* str)
 char *ft_strchr(const char *s, int c)
 {
     int i;
-    i = 0;
 
+    i = 0;
     if (!s)
-        return NULL;  
-    char ch = (char)c;
+        return (0);
+    if (c == '\0')
+        return ((char *)&s[ft_strlen(s)]);
     while (s[i] != '\0')
     {
-        if (s[i] == ch)
-            return (s + i);
+        if (s[i] == (char)c)
+            return ((char *)(s + i));
         i++;
     }
-    
-    if (s[i] == ch)
-        return (s + i);
 
-    return NULL;
+    return (0);
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_strjoin(char *left_over, char *buffer)
 {
     size_t i;
-    size_t str_len;
-    char *substr;
-
-    str_len = ft_strlen(s);
-    i = 0;
+    size_t j;
+    char *str;
     
-    if (!s)
-        return (NULL);
-    if (start >= str_len)
-        return ("");
-
-    if (len > str_len - start)
-        len = str_len - start;
-    
-    substr = malloc(len + 1);
-    if (!substr)
-        return (NULL);
-    
-    while (i < len && s[start + i])
+    i = -1;
+    j = 0;
+    if (!left_over)
     {
-        substr[i] = s[start + i];
-        i++;
+        left_over = (char *)malloc(1);
+        if (!left_over)
+            return (NULL);
+        left_over[0]='\0';
     }
-    substr[i] = '\0';
-
-    return (substr);
+    if (!left_over || !buffer)
+        return (NULL);
+    str = malloc((ft_strlen(left_over) + ft_strlen(buffer))+1);
+    if (!str)
+        return (NULL);
+    while (left_over[++i])
+        str[i] = left_over[i];
+    while (buffer[j])
+        left_over[j++] = buffer[i++];
+    str[(ft_strlen(left_over) + ft_strlen(buffer))] = '\0';
+    free(left_over);
+    return str;
 }
