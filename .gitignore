@@ -1,5 +1,4 @@
 .vscode/
 *.exe
 *.txt
-.gitignore
 main.c
