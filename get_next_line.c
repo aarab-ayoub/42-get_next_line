@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 16:30:41 by ayoub             #+#    #+#             */
+/*   Updated: 2024/12/27 17:23:04 by ayoub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*save(char *buffer)
@@ -22,7 +34,7 @@ char	*save(char *buffer)
 	return (new_buffer);
 }
 
-char	*ft_line(char *buffer)
+char	*extract_line(char *buffer)
 {
 	int		i;
 	char	*line;
@@ -79,7 +91,7 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	tmp = buffer;
-	line = ft_line(tmp);
+	line = extract_line(tmp);
 	buffer = save(tmp);
 	free(tmp);
 	return (line);

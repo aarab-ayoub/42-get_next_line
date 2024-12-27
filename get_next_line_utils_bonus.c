@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 16:31:10 by ayoub             #+#    #+#             */
+/*   Updated: 2024/12/27 16:32:59 by ayoub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *str)
@@ -6,7 +18,7 @@ size_t	ft_strlen(char *str)
 
 	i = 0;
 	if (str == NULL)
-		return (0);	
+		return (0);
 	while (str[i])
 		i++;
 	return (i);

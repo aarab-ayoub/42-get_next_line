@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/27 16:31:01 by ayoub             #+#    #+#             */
+/*   Updated: 2024/12/27 16:32:26 by ayoub            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line_bonus.h"
 
 char	*save(char *buffer)
@@ -22,7 +34,7 @@ char	*save(char *buffer)
 	return (new_buffer);
 }
 
-char	*ft_line(char *buffer)
+char	*extract_line(char *buffer)
 {
 	int		i;
 	char	*line;
@@ -79,7 +91,7 @@ char	*get_next_line(int fd)
 	if (!buffer[fd])
 		return (NULL);
 	tmp[fd] = buffer[fd];
-	line = ft_line(tmp[fd]);
+	line = extract_line(tmp[fd]);
 	buffer[fd] = save(tmp[fd]);
 	free(tmp[fd]);
 	return (line);
