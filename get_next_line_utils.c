@@ -5,53 +5,55 @@ size_t	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (0);	
 	while (str[i])
 		i++;
 	return (i);
 }
 
-char	*ft_strchr(char *s, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int	i;
 
 	i = 0;
-	if (!s)
+	if (!str)
 		return (0);
 	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
+		return ((char *)&str[ft_strlen(str)]);
+	while (str[i] != '\0')
 	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
+		if (str[i] == (char)c)
+			return ((char *)&str[i]);
 		i++;
 	}
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *left_over, char *buffer)
 {
 	size_t	i;
 	size_t	j;
 	char	*str;
 
-	if (!s1)
+	if (!left_over)
 	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
+		left_over = (char *)malloc(1 * sizeof(char));
+		left_over[0] = '\0';
 	}
-	if (!s1 || !s2)
+	if (!left_over || !buffer)
 		return (NULL);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	str = malloc((ft_strlen(left_over) + ft_strlen(buffer) + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = -1;
 	j = 0;
-	if (s1)
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
-	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
-	free(s1);
+	if (left_over)
+		while (left_over[++i] != '\0')
+			str[i] = left_over[i];
+	while (buffer[j] != '\0')
+		str[i++] = buffer[j++];
+	str[ft_strlen(left_over) + ft_strlen(buffer)] = '\0';
+	free(left_over);
 	return (str);
 }
