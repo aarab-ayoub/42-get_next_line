@@ -2,18 +2,24 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-int main()
+int main(void)
 {
-    int fd = open("text.txt", O_RDONLY);
-    char *line;
+    int     fd;
+    char    *line;
 
+    fd = open("example.txt", O_RDONLY);
     if (fd == -1)
-        return (1);
+    {
+        perror("Error opening file");
+        return 1;
+    }
+
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("%s\n", line);
+        printf("Read line: %s\n", line); // Message de débogage
         free(line);
     }
     close(fd);
-    return (0);
+
+    return 0;
 }
