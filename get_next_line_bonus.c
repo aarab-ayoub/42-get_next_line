@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:31:01 by ayoub             #+#    #+#             */
-/*   Updated: 2024/12/27 16:32:26 by ayoub            ###   ########.fr       */
+/*   Updated: 2024/12/28 01:11:09 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,16 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*buffer[10240];
-	char		*tmp[10240];
+	char		*tmp;
 
 	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (0);
 	buffer[fd] = read_and_save(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
-	tmp[fd] = buffer[fd];
-	line = extract_line(tmp[fd]);
-	buffer[fd] = save(tmp[fd]);
-	free(tmp[fd]);
+	tmp = buffer[fd];
+	line = extract_line(tmp);
+	buffer[fd] = save(tmp);
+	free(tmp);
 	return (line);
 }
